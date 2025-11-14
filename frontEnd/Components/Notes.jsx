@@ -20,7 +20,7 @@ const Notes = ()=> {
   //fetch notes
   const fetchNotes = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/getNotes");
+      const response = await axios.get("https://notesapp-bu2x.onrender.com/api/getNotes");
       setNotes(response.data.data); //array of notes
     }catch (error) {
       console.log("fetch error:", error);
@@ -47,7 +47,7 @@ const Notes = ()=> {
       if(editNoteId) {
       //update
       await axios.put(
-        `http://localhost:8000/api/updateNote/${editNoteId}`,
+        `https://notesapp-bu2x.onrender.com/api/updateNote/${editNoteId}`,
         {title,message,category}
       );
       alert("Note updated");
@@ -55,7 +55,7 @@ const Notes = ()=> {
     }else{
 
     //add 
-    await axios.post("http://localhost:8000/api/createNote",{
+    await axios.post("https://notesapp-bu2x.onrender.com/api/createNote",{
     title,
     message,
     category
@@ -83,7 +83,7 @@ const Notes = ()=> {
 
   const handleDelete = async (id) => {
     try{
-      await axios.delete(`http://localhost:8000/api/deleteNote/${id}`);
+      await axios.delete(`https://notesapp-bu2x.onrender.com/api/deleteNote/${id}`);
       fetchNotes();
       alert("Note deleted");
     } catch (error) {
